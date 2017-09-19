@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compaitable" content="IE-edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Neighbourhood Map</title>
+  <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div data-bind="click:mask" id="map"></div>
+    <div id="title_container">
+      <div id="title">
+        <h3 id="title_main">Neighbourhood Map</h3>
+      </div>
+    </div>
+    <div id="content_search">
+      <form id="content_form" data-bind="click:disp" action="#">
+        <input id="content_searchbar" placeholder="Search…" type="text" name="q" data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+      </form>
+    </div>
+    <div id="content_container">
+      <div id="content_data">
+        <ul id="content_data_ul" data-bind="template: {name:'location', foreach:filteredloc}"></ul>
+      </div>
+    </div>
+    <div id="btn">
+      <button data-bind="click:resetMap">Reset Zoom</button>
+    </div>
+  </div>
+  <script type="text/html" id="location">
+    <li class="content_data_li" data-bind="click:point, attr: { id: 'click_' + $index() }">
+      <a>
+        <span data-bind="text: name"></span>
+      </a>
+    </li>
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="js/mapping.min.js"></script>
+</body>
+
+</html>
